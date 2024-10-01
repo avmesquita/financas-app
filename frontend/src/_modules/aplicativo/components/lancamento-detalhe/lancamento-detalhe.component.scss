@@ -1,0 +1,40 @@
+//@import "../../../../assets/scss/rwd-queries";
+
+/*
+::ng-deep .p-dropdown>.p-component {
+    width: unset !important;  
+}
+
+::ng-deep .p-inputgroup .p-inputtext, .p-fluid .p-inputgroup .p-inputtext, .p-inputgroup .p-inputwrapper, .p-inputgroup .p-inputwrapper>.p-component {    
+    width: unset !important;  
+}
+
+::ng-deep .tp-lancamento .p-inputgroup .p-inputtext, .tp-lancamento.p-fluid .p-inputgroup .p-inputtext, .tp-lancamento.p-inputgroup .p-inputwrapper, .tp-lancamento .p-inputgroup .p-inputwrapper>.p-component {
+    flex: 1 1 auto;
+    width: 100% !important; 
+}
+
+*/
+
+textarea.p-inputtext {
+    min-width: 100%;
+    resize: none;
+}
+
+/*
+::ng-deep .p-panel {
+    @include onlyMobile {
+        //margin-right: 30px !important;
+    }
+}
+::ng-deep .panel-header {
+    @include onlyMobile {
+        margin-right: 30px !important;
+    }
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+    @include onlyMobile {
+        padding-right: 60px !important;
+    }
+}*/

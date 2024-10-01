@@ -1,0 +1,50 @@
+@import '../../../../assets/scss/rwd-queries';
+
+#conteudo {
+    padding: 0;
+    margin: 0;
+    height: 94.9%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer {
+    position: fixed;
+    bottom:0;
+    background-color: goldenrod;
+    width:100%;
+    height: 20px;
+    vertical-align: middle;
+    text-align:center;
+}
+
+.home-action-button {
+    width: 200px; 
+    height:100px;
+    opacity: 100;
+    @media (max-width: 600px) {
+        width: 150px; 
+        height:100px;
+        opacity: 100;    
+    }
+}
+
+.home-info-boxes {
+    max-width: 300px!important;
+    height: 300px;
+    padding: 0rem !important;    
+    padding-right: 5px !important;
+    padding-left: 20px !important;
+}
+
+.font-titulo {    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;    
+}
+
+.font-texto {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    font-weight: normal;
+    text-align: justify;    
+}

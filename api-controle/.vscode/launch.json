@@ -1,0 +1,27 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node-terminal",
+        "request": "launch",
+        "name": "Finance Controller API",
+        "command": "cd api | npm run start:debug",    
+        "autoAttachChildProcesses": true        
+      },
+      {
+        "name": "DEBUG API",
+        "skipFiles": ["<node_internals>/**"],
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run", "start:debug"],
+        "env": {
+          "PORT": "3000" // env var used in app        
+        }
+      },             
+    ]
+}

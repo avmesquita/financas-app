@@ -1,0 +1,120 @@
+<div style="height: 10px;"></div>
+<ng-container *ngIf="modo === ModoExterno.Nenhum">
+    <p style="text-align: center;">
+        Sem Permissão
+    </p>
+</ng-container>
+    
+<form [formGroup]="formLancamento" style="margin-top: -25px;">
+    <input type="hidden" formControlName="id" />
+      <p-panel header="LANÇAMENTO">
+        <div class="grid" style="padding-top: 10px;">
+                <div class="col-6">
+                    <div class="tp-lancamento">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                        <span class="p-float-label">                        
+                            <p-dropdown class="dpTipoLancamento" pInput [options]="tiposDeLancamento" formControlName="tipoLancamento" optionLabel="tipo" optionValue="value"></p-dropdown>                        
+                            <label for="tiposDeLancamento">Tipo de Lançamento</label>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+    
+                <div class="col-6">
+                    <div class="p-inputgroup">                        
+                        <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>                        
+                        <span class="p-float-label-fake">                            
+                            <input pInput id="dataLancamento" type="date" formControlName="dataLancamento" required style="height:36px;border:0.5px solid lightgray" />
+                            <!--
+                            <p-calendar formControlName="dataLancamento"
+                                        [showIcon]="false" 
+                                        [showOnFocus]="true" 
+                                        inputId="dataLancamento"
+                                        id="dataLancamento" />
+                            -->                            
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid" style="padding-top: 10px;">
+                <div class="col-6">
+                    <div class="p-inputgroup">                    
+                        <span class="p-float-label">
+                            &nbsp;
+                        </span>
+                    </div>                
+                </div>
+
+                <div class="col-6">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+                        <span class="p-float-label">                        
+                            <p-inputNumber id="valor-titulo" formControlName="valor" mode="decimal" [useGrouping]="false" [maxFractionDigits]="2" [locale]="locale" ></p-inputNumber>
+                            <label for="valor-titulo">Valor do Título</label>
+                        </span>
+                    </div>
+                </div>    
+        </div>
+        <div class="grid">
+
+            <div class="col-12">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                    <span class="p-float-label">
+                        <input id="titulo" type="text" maxlength="100" pInputText formControlName="titulo" aria-describedby="titulo-help" placeholder="" required />
+                        <label for="titulo">Titulo</label>
+                    </span>
+                </div>
+                <small id="lancamento-help" class="p-error" *ngIf="formLancamento.controls['titulo'].errors && formLancamento.controls['titulo'].dirty">Titulo inválido</small>
+            </div>
+    
+            <div class="col-12">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-info-circle"></i></span>
+                    <span class="p-float-label">
+                        <textarea id="descricao" pInputText formControlName="descricao" rows="3" cols="20"></textarea>
+                        <label for="descricao">Descrição</label>
+                    </span>
+                </div>
+                <small id="email-help" class="p-error" *ngIf="formLancamento.controls['descricao'].errors && formLancamento.controls['descricao'].dirty">Descrição inválida</small>
+            </div>
+
+            <div class="col-12">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-tags"></i></span>
+                    <span class="p-float-label">
+                        <!--<p-chips id="categorias" separator="," formControlName="categorias"></p-chips>-->
+                        <input id="categorias" pInputText formControlName="categorias" placeholder="informe separado por virgulas" style="width: 100%;">
+                        <label for="categorias">Categorias</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-6" style="padding-top: 20px;">
+                <div class="p-inputgroup">                    
+                    <span class="p-float-label">
+                    </span>
+                </div>
+            </div>
+        </div>
+      </p-panel>
+
+    <div>
+        <div class="grid" style="padding-top: 20px;">
+            <div class="col-6">
+              <button pButton type="button" label="Fechar" class="ui-button-raised p-button-warning" 
+                (click)="fechar()"></button>
+            </div>          
+          
+            <div class="col-6" style="float:right;text-align: right;" *ngIf="this.modo != ModoExterno.Consultar && this.modo != ModoExterno.Nenhum">
+              <button pButton type="button" label="Registar" class="ui-button-raised p-button-success" 
+                (click)="submitLancamento()" [disabled]="!formLancamento.valid"></button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!formLancamento.valid">
+        {{ formLancamento.errors  }}
+
+    </div>
+</form>    

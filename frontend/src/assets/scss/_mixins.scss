@@ -1,0 +1,163 @@
+@font-face {
+  font-family: "franklin-gothic-book";
+  src: url("fonts/franklin-book.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "franklin-gothic-demi";
+  src: url("fonts/franklin-demi.TTF") format("truetype");
+}
+@font-face {
+  font-family: "franklin-gothic-heavy";
+  src: url("fonts/franklin-heavy.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "franklin-gothic-medium";
+  src: url("fonts/franklin-medium.ttf") format("truetype");
+}
+
+@mixin franklin-gothic-book {
+  font-family: "franklin-gothic-book";
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+}
+
+@mixin franklin-gothic-medium {
+  font-family: "franklin-gothic-medium";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+@mixin franklin-gothic-demi {
+  font-family: "franklin-gothic-demi";
+}
+
+@mixin franklin-gothic-heavy {
+  font-family: "franklin-gothic-heavy";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 34px;
+  letter-spacing: 0em;
+}
+
+//------------------------------------
+@font-face {
+  font-family: "kumbh-sans-black";
+  src: url("fonts/kumbh-sans-black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-bold";
+  src: url("fonts/kumbh-sans-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-extra-bold";
+  src: url("fonts/kumbh-sans-extra-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-extra-light";
+  src: url("fonts/kumbh-sans-extra-light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-light";
+  src: url("fonts/kumbh-sans-light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-medium";
+  src: url("fonts/kumbh-sans-medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-regular";
+  src: url("fonts/kumbh-sans-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-semi-bold";
+  src: url("fonts/kumbh-sans-semi-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-thin";
+  src: url("fonts/kumbh-sans-thin.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "kumbh-sans-variable";
+  src: url("fonts/kumbh-sans-variable-font-yopq-wght.ttf") format("truetype");
+}
+//---
+@mixin kumbh-sans-black {
+  font-family: "kumbh-sans-black";
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+}
+
+@mixin kumbh-sans-bold {
+  font-family: "kumbh-sans-bold";
+  font-style: normal;
+  font-weight: 900;
+  line-height: 34px;
+  letter-spacing: 0em;
+}
+
+@mixin kumbh-sans-extra-bold {
+  font-family: "kumbh-sans-extra-bold";
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0em;
+}
+
+@mixin kumbh-sans-extra-light {
+  font-family: "kumbh-sans-extra-light";
+  font-style: normal;
+}
+
+@mixin kumbh-sans-light {
+  font-family: "kumbh-sans-light";
+  font-style: normal;
+}
+
+@mixin kumbh-sans-medium {
+  font-family: "kumbh-sans-medium";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+@mixin kumbh-sans-regular {
+  font-family: "kumbh-sans-regular";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;  
+}
+@mixin kumbh-sans-semi-bold {
+  font-family: "kumbh-sans-semi-bold";
+}
+@mixin kumbh-sans-thin {
+  font-family: "kumbh-sans-thin";
+}
+@mixin kumbh-sans-variable {
+  font-family: "kumbh-sans-variable";
+}
+
+//---------------------------------------------
+@mixin focus($shadowColor) {
+  &:focus {
+    box-shadow: 0 0 0 0.2rem $shadowColor;
+  }
+  &.p-focus {
+    box-shadow: 0 0 0 0.2rem $shadowColor;
+    border-color: $anpg-red;
+  }
+}

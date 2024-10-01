@@ -1,0 +1,42 @@
+<div [ngStyle]="{'padding': (!screenService.isMobile && !screenService.isTablet) ? '200px' : ''}">
+
+  <p-card>
+    <p-fieldset>
+      <ng-template pTemplate="header">
+        RECUPERAR CONTA
+      </ng-template>
+
+      <div [formGroup]="recoverForm">
+          <div class="p-fluid">
+            <div class="p-field">
+              <label for="input-user">Utilizador</label>
+              <input
+                id="input-user"
+                formControlName="username"
+                type="email"
+                pInputText
+                placeholder="informe-nos vosso e-mail. se vossa conta existir, receberás um email com indicações de como proceder"
+              />
+            </div>  
+          </div>
+        
+          <div class="row pt10px">
+              <p-button icon="pi pi-database"
+                        (click)="recuperar()"
+                        label="Recuperar"
+                        [loading]="loading"
+              ></p-button>
+            
+              <div style="text-align: right;">
+                <p-button icon="pi pi-sign-in" (click)="irParaModo(funcao.login)" label="Entrar"></p-button>&nbsp;
+          
+                <p-button icon="pi pi-user-plus" (click)="irParaModo(funcao.registo)" label="Registar"></p-button>
+            
+              </div>
+          
+        </div>
+      </div>
+    </p-fieldset>
+  </p-card>
+</div>      
+  

@@ -1,0 +1,35 @@
+<div style="height: 10px;"></div>
+<ng-container *ngIf="modo === ModoExterno.Nenhum">
+    <p style="text-align: center;">
+        Sem Permissão
+    </p>
+</ng-container>
+    
+<form [formGroup]="formConta">
+    <input type="hidden" formControlName="id" />
+    <div class="p-grid p-fluid">
+        <div class="p-col-12">
+            <label for="float-input">Nome da Conta</label><br>
+            <input pInputText id="float-input" type="text" formControlName="nome" placeholder="Nome da Conta" required />
+        </div>
+        <div class="p-col-12" style="padding-top: 10px;">
+            <label for="float-input">Descrição</label><br>
+            <input pInputText id="float-input" type="text" placeholder="Descrição" formControlName="descricao" style="background-color: transparent;"/>
+
+        </div>
+    </div>
+    <div class="pt10px" *ngIf="this.modo != ModoExterno.Incluir && this.modo != ModoExterno.Nenhum">
+        <app-saldos [idConta]="id"></app-saldos>
+    </div>
+    <div class="grid" style="padding-top: 20px;">
+        <div class="col-6">
+            <button pButton type="button" label="Fechar" class="ui-button-raised p-button-warning" 
+            (click)="fechar()"></button>
+        </div>
+        <div class="col-6" style="float:right;text-align: right;" *ngIf="this.modo != ModoExterno.Consultar && this.modo != ModoExterno.Nenhum">
+            <button pButton type="button" label="Gravar" class="ui-button-raised p-button-success" 
+            (click)="submitConta()"></button>
+        </div>
+    </div>
+    
+</form>    

@@ -1,0 +1,146 @@
+<p-toast />
+<p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<p-overlayPanel #overlaySaldo [style]="{'right': '10px','max-width':'250px'}">
+    <ng-template pTemplate>
+        <app-saldos [idConta]="contaSelectedId"></app-saldos>
+    </ng-template>
+</p-overlayPanel>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-1">
+        <ng-template pTemplate="left">
+            Conta:&nbsp;            
+            <p-dropdown class="contas" 
+                        pInput [(ngModel)]="contaSelectedId" 
+                        (onChange)="onChangeContaSelect($event)"                         
+                        [options]="this.contas"
+                        optionLabel="nome" 
+                        optionValue="id" 
+                        [dataKey]="'id'"
+                        [lazy]="false"                        
+                        [style]="{ 'min-width': '160px' }">
+            </p-dropdown>            
+        </ng-template>
+        <ng-template pTemplate="right">
+            &nbsp;&nbsp;&nbsp;&nbsp;<button class="lightblue-button" type="text" icon="pi pi-dollar" iconPos="left" pButton label="Consolidado" (click)="overlaySaldo.toggle($event)"></button>
+        </ng-template>
+    </p-toolbar>
+    
+    <ng-container *ngIf="(lancamentos$ | async) as lancamentos">
+        <p-table #dt [value]="lancamentos"
+                 styleClass="p-datatable-sm p-datatable-striped p-datatable-gridlines"
+                 [rows]="10" 
+                 [paginator]="true" 
+                 [globalFilterFields]="['data','titulo','tipoLancamento','valor','categorias']"
+                 [(selection)]="lancamentosSelecionados" 
+                 [rowHover]="true" 
+                 dataKey="id" 
+                 [loading]="splashScreenService.visible"
+                 filterBy="titulo"
+                 [sortField]="sortField" 
+                 [sortOrder]="sortOrder"                  
+                 [showLoader]="true"
+                 currentPageReportTemplate="A exibir {first} ate {last} de {totalRecords} registos" 
+                 [showCurrentPageReport]="false"
+                 csvSeparator=";"
+                 responsiveLayout="stack"
+                 [resizableColumns]="true"
+                 [rowsPerPageOptions]="[5, 10, 25, 50, 100]">
+            <ng-template pTemplate="caption">                
+                <div class="grid lancamento-table-header" >
+                    <div class="col-6">
+                        <button pButton pRipple label="Novo Lançamento" icon="pi pi-plus" class="p-button-success green-button p-mr-2" (click)="incluirLancamento()"></button>
+                    </div>
+                    <div class="col-6" style="text-align: right;">
+                        <input class="lancamento-search-field" #searchBox pInputText type="text" (input)="dt.filterGlobal(searchBox.value, 'contains')" placeholder="Procurar Titulo ..." />
+                    </div>
+                </div>                      
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th style="width: 3rem">
+                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    </th>
+                    <th pSortableColumn="data">Data
+                        <p-sortIcon field="data" type="date"></p-sortIcon> 
+                        <p-columnFilter type="date" field="data" display="menu"></p-columnFilter>                        
+                    </th>
+                    <th pSortableColumn="titulo">Titulo
+                        <p-sortIcon field="titulo"></p-sortIcon>
+                        <p-columnFilter type="text" field="titulo" display="menu"></p-columnFilter> 
+                    </th>
+                    <th pSortableColumn="tipoLancamento">Tipo Lançamento
+                        <p-sortIcon field="tipoLancamento"></p-sortIcon>                    
+                    </th>
+                    <th [ngStyle]="{'text-align': 'center' }" pSortableColumn="valor">Valor
+                        <p-sortIcon field="valor" type="number"></p-sortIcon>
+                        <p-columnFilter type="number" field="valor" display="menu"></p-columnFilter>
+                    </th>                    
+                    <th pResizableColumn pSortableColumn="categorias">Categorias
+                        <p-sortIcon field="categorias"></p-sortIcon>
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lancamento let-index>
+                <tr>
+                    <td>
+                        <p-tableCheckbox [value]="lancamento"></p-tableCheckbox>
+                    </td>
+                    <td><span class="p-column-title">Data</span>{{ lancamento.data | date: 'dd.MM.YYYY' }}</td>
+                    <td>
+                        {{ lancamento.titulo }}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Tipo</span>
+                        <span [ngStyle]="{'color': (lancamento.tipoLancamento == 'D') ? 'red' : 'blue'}">
+                            {{ lancamento.tipoLancamento == 'D' ? 'Debito' : 'Credito' }}
+                        </span>
+                    </td>
+                    <td [ngStyle]="{'text-align': 'right' }">
+                        <span class="p-column-title">Valor</span>
+                        <span [ngStyle]="{'color': (lancamento.tipoLancamento == 'D') ? 'red' : 'blue'}">
+                            {{ lancamento.valor | currency }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Categorias</span>
+                        <span>
+                            <!--<p-chips class="p-fluid" [ngModel]="lancamento.categorias" separator="," [disabled]="true"></p-chips>-->
+                            <input id="categorias" pInputText value="{{ lancamento.categorias }}" placeholder="" style="width: 100%;" [disabled]="true">
+                        </span>
+
+                    </td>
+                    <td style="text-align: right;">
+                        <button pButton 
+                                pRipple 
+                                icon="pi pi-eye" 
+                                class="p-button-rounded blue-button p-mr-2" 
+                                (click)="consultarLancamento(lancamento)">
+                        </button>&nbsp;
+                        <button pButton 
+                                pRipple 
+                                icon="pi pi-pencil" 
+                                class="p-button-rounded orange-button p-mr-2" 
+                                (click)="editarLancamento(lancamento)">
+                            </button>&nbsp;
+                        <button pButton 
+                                pRipple 
+                                icon="pi pi-trash" 
+                                class="p-button-rounded red-button" 
+                                (click)="excluirLancamento(lancamento)">
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+            <!--
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    Existem no total {{aplicativoService.financas.lancamentos ? aplicativoService.financas.lancamentos.length : 0 }} lançamentos.
+                </div>
+            </ng-template>
+            -->
+        </p-table>
+    </ng-container>
+</div>

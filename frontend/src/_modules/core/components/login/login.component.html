@@ -1,0 +1,52 @@
+<div [ngStyle]="{'padding': (!screenService.isMobile && !screenService.isTablet) ? '200px' : ''}">
+
+  <p-card>
+    <p-fieldset>
+      <ng-template pTemplate="header">
+        ENTRAR
+      </ng-template>
+
+      <div [formGroup]="loginForm">
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="input-user">Utilizador</label>
+            <input
+              id="input-user"
+              formControlName="username"
+              type="email"
+              pInputText        
+              placeholder="informe-nos vosso e-mail"
+            />
+          </div>
+      
+          <div class="p-field pt10px">
+            <label for="input-pw">Password</label>
+            <p-password id="input-pw" 
+                        formControlName="password" 
+                        [feedback]="false" 
+                        [toggleMask]="true"
+                        placeholder="informe aquela senha bem estranha que criaste no registo"            
+            ></p-password>
+          </div>
+        </div>
+      
+        <div class="row pt10px">
+          <p-button icon="pi pi-sign-in"               
+                    (click)="entrar()"
+                    label="Entrar"
+                    [loading]="loading"                    
+          ></p-button>
+        
+          <div style="text-align: right;">
+            <p-button icon="pi pi-user-plus" (click)="irParaModo(funcao.registo)" label="Registar"></p-button>
+      
+            <p-button icon="pi pi-database" (click)="irParaModo(funcao.recuperar)" label="Recuperar"></p-button>
+        
+          </div>
+        </div>
+      </div>
+
+    </p-fieldset>
+  </p-card>
+  
+</div>

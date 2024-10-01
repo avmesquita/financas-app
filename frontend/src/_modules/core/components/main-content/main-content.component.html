@@ -1,0 +1,42 @@
+<div class="app-background height-total" style="overflow: hidden;">
+<div>
+    <div style="padding:50px;padding-bottom:10px;background-color:whitesmoke;opacity: 0.6;">
+        <div class="col-12 grid">
+            <div class="col-7">
+                <H1 style="color:black;font-weight: 700;font-size: xx-large;">Sistema de Finanças</H1>
+                <H3 title="Licença de Uso Gratuito">Código Livre</H3>
+            </div>
+            <div class="col-5">
+                <button pButton class="p-button-success home-action-button" title="Finanças App" value="Finanças App" (click)="goToApplicativo()">
+                    <span style="font-size: 24px;">Gerenciar<br>Minhas Finanças</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="flex" style="padding: 40px;">
+        <div style="padding-left:10px;max-width: 500px;">
+            <p-card>
+                <p-fieldset>
+                    <ng-template pTemplate="header">
+                        <div class="align-items-center gap-2 px-2">                        
+                            <span class="font-titulo">APRESENTAÇÃO</span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="content">
+                        <p class="font-texto" style="padding-top:5px">
+                            A premissa deste projeto é garantir que quem quer queira
+                            possa ter um sistema a executar onde sentir-se mais seguro.
+                        </p>
+                        <p class="font-texto" style="padding-top:5px">
+                            A ideia do sistema é permitir que qualquer pessoa possa
+                            ter um sistema de educação financeira e controle de finanças
+                            pessoais, apesar de ser útil para pequenas empresas, pois é
+                            mono-usuário, ou seja, cada usuário possui suas próprias contas e 
+                            lançamentos.
+                        </p>
+                    </ng-template>
+                </p-fieldset>
+            </p-card>    
+        </div>
+    </div>
+</div>

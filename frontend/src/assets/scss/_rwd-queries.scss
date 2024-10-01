@@ -1,0 +1,84 @@
+$xsOnlyScreen: 280px;
+$smOnlyScreen: 576px;
+$mdScreen: 768px;
+$lgScreen: 992px;
+$xlScreen: 1200px;
+$xxlScreen: 1441px;
+
+/*
+  New iPhones viewport
+*/
+
+@mixin iphone6 {
+    /* iphone 6, 6s, 7, 8 */
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+        @content;
+    }
+}
+
+@mixin iphoneX {
+    /*  iPhone X  */
+    @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+        @content;
+    }
+}
+
+@mixin iphoneXR {
+    /* iphone XR */
+    @media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+        @content;
+    }
+}
+@mixin iphoneXS {
+    /* iphone XS */
+    @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+        @content;
+    }
+}
+@mixin iphoneXSMax {
+    /* iphone XS Max */
+    @media only screen and (min-device-width: 414px) and (max-device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
+        @content;
+    }
+}
+
+/*  Media Queries MIXINS to use inside CLASS or ID */
+
+/*  This mixin will trigger from 1px to 576px */
+/*  Use this when you want to specifically target any element only for mobile */
+@mixin onlyMobile {
+    @media (max-width: #{$smOnlyScreen}) {
+        @content;
+    }
+}
+
+/* Media Queries from medium up viewport sizes  */
+@mixin xsmallScreen {
+    @media (max-width: #{$xsOnlyScreen}) {
+        @content;
+    }
+}
+
+@mixin mediumScreen {
+    @media (min-width: #{$mdScreen}) {
+        @content;
+    }
+}
+
+@mixin largeScreen {
+    @media (min-width: #{$lgScreen}) {
+        @content;
+    }
+}
+
+@mixin xlargeScreen {
+    @media (min-width: #{$xlScreen}) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media (min-width: #{$xxlScreen}) {
+        @content;
+    }
+}

@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  padding: 0rem;
+  background: whitesmoke!important;
+}
+
+.app-root {
+  padding: 0rem;
+  background: goldenrod!important;
+  color: #495057;
+  border: 1px solid goldenrod!important;
+  border-radius: 0px;
+}
+
+.app-menu {
+  padding: 0rem;
+  background: goldenrod!important;
+  color: #495057;
+  border: 1px solid goldenrod!important;
+  border-radius: 0px;
+}
+
+.p-menubar {
+  padding: 0rem;
+  background: goldenrod!important;
+  color: #495057;
+  border: 1px solid goldenrod!important;
+  border-radius: 0px;
+}
+
+.p-component  {
+  font-family: 'Times New Roman', Times, serif!important;
+  font-size: 1rem!important;
+  font-weight: 600!important;  
+
+}
+
+p-avatar {
+  cursor: pointer;
+}
+
+.app-background {
+  background-image: url('/assets/images/financas-2-hd.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.p-inputgroup .p-inputtext, .p-fluid .p-inputgroup .p-inputtext, .p-inputgroup .p-inputwrapper, .p-inputgroup .p-inputwrapper>.p-component {    
+  flex: 1 1 auto;
+  width: 100% !important; 
+}
+
+.p-dialog {
+  .p-dialog-header {
+    background: goldenrod;
+    color: white;
+    padding-top: 17px;
+    padding-bottom: 17px;
+
+    .p-dialog-title {
+      font-size: 1.25rem;      
+    }
+
+    .p-dialog-header-icon {
+      color: white;      
+    }
+  }
+  .p-dialog-content {
+    padding-top: 40px;
+    height: 100%;
+  }
+  &.p-confirm-dialog {
+    .p-confirm-dialog-message {
+      font-size: 1rem;      
+    }
+  }
+}
+
+.pt10px {
+  padding-top: 10px;
+}
+.height-total {
+  min-height: 100vh;
+}
+
+@import "./assets/scss/app.scss";
+@import "./assets/scss/custom.scss";

@@ -1,0 +1,80 @@
+name: "financas-app"
+version: "3"
+services:
+  mysql-db:
+    image: mysql:8.0.37     
+    restart: unless-stopped
+    command: --lower_case_table_names=0
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_USER: $MYSQL_USERNAME
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+    ports:
+      - 3306:3306
+    stdin_open: true
+    tty: true
+    volumes:
+      - mysql-volume:/var/lib/mysql:rw
+      - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - default
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mysql-db
+    networks:
+      - default
+
+  api-controle:
+    build: "../api-controle"
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $API_CONTROLE_PORT:$API_CONTROLE_PORT
+    environment:
+      MYSQL_HOST: mysql-db
+      MYSQL_PORT: $MYSQL_PORT
+      MYSQL_USERNAME: $MYSQL_USERNAME
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      DEBUG: "false"
+      INSECURE_AUTH: "false"
+      JWT_SECRET: $JWT_SECRET
+      PORT: $API_CONTROLE_PORT
+    networks:
+      - default
+
+  api-consolidado:
+    build: "../api-consolidado"
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $API_CONSOLIDADO_PORT:$API_CONSOLIDADO_PORT
+    environment:
+      MYSQL_HOST: mysql-db
+      MYSQL_PORT: $MYSQL_PORT
+      MYSQL_USERNAME: $MYSQL_USERNAME
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      DEBUG: "false"
+      INSECURE_AUTH: "false"
+      JWT_SECRET: $JWT_SECRET
+      PORT: $API_CONSOLIDADO_PORT
+    networks:
+      - default
+
+  frontend:
+    build: "../frontend"
+    restart: unless-stopped
+    ports:
+      - 80:80
+    networks:
+      - default
+
+volumes:
+  mysql-volume:

@@ -1,0 +1,12 @@
+<p-toast />
+<div style="padding: 50px;">
+<div *ngIf="display === funcao.login">
+    <app-login (emitToAlteraModo)="alteraModo($event)"></app-login>    
+</div>
+ <div *ngIf="display === funcao.registo">
+     <app-registo (emitToAlteraModo)="alteraModo($event)"></app-registo>
+ </div>
+  <div *ngIf="display === funcao.recuperar">
+     <app-recuperar (emitToAlteraModo)="alteraModo($event)"></app-recuperar>
+  </div> 
+</div>

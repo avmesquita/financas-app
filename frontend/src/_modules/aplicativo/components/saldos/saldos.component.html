@@ -1,0 +1,20 @@
+<div class="card">
+    <p-panel header="CONSOLIDADO">
+        <table style="width: 100%;">
+            <tr>
+                <td>CREDITOS</td>
+                <td style="color:blue;text-align: right;">{{ (saldoCredito$ | async) | currency:'EUR': '$':'1.2-2'  }}</td>
+            </tr>
+            <tr>
+                <td>DEBITOS</td>
+                <td style="color:red;text-align: right;">{{ (saldoDebito$ | async) | currency:'EUR': '$':'1.2-2' }}</td>
+            </tr>
+            <tr>
+                <td>SALDO</td>
+                <td [style]="{'text-align': 'right'}" [ngStyle]="{'color': (getSaldoActual() > 0) ? 'blue' : (getSaldoActual() == 0)? 'black': 'red'}">
+                    {{ getSaldoActual() | currency:'EUR': '$':'1.2-2' }}
+                </td>
+            </tr>
+        </table>
+    </p-panel>
+</div>

@@ -1,0 +1,109 @@
+@import "mixins";
+
+$banner-height: 50px;
+
+p,
+ul,
+ol,
+li,
+span {
+}
+h1 {
+  font-size: 4rem; /* 64px */
+}
+h2 {
+  font-size: 1.875rem; /* 30px */
+}
+h3 {
+  font-size: 1.5rem; /* 24px */
+}
+h4 {
+  font-size: 1.25rem; /* 20px */
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*  Common styles */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: $grayedBackground;
+
+  /*  Specific style for Firefox scrollbars */
+  scrollbar-color: $dark-grey transparent;
+  scrollbar-width: none;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+body {
+  font-size: 16px; /* Don't change this fixed size once its the standard for text size on the web */
+  background: $grayedBackground;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/////////////////////////////////////////////
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+/* ------------------------------------------------------------ */
+// Beautiful scrollbar
+/* ------------------------------------------------------------ */
+
+/*  Style for Firefox is defined in the html tag above */
+
+/* scrollbar custom */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $eighty-black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $dark-grey;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $dark-grey;
+}
+
+::-webkit-scrollbar-corner {
+  width: 0;
+}

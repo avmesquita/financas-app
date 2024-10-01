@@ -1,0 +1,14 @@
+name: "financas-app"
+version: "3"
+services:
+  webapp:
+    build: "."
+    tags:      
+      - "financas-app"      
+    image: avmesquita/financas-app-frontend
+    ports:
+      - 80:80
+    environment:
+      - API-CONTROLE='http://localhost:3000'
+      - API-CONSOLIDADO='http://localhost:3000'
+      - GTAG='G-0BS7XFKQDG'

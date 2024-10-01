@@ -1,0 +1,58 @@
+::ng-deep .p-menuitem-text {
+    background-color: transparent;
+    color: greenyellow !important;
+}
+
+::ng-deep .p-menuitem-text:hover {
+    background-color: #000 !important;
+    color: greenyellow !important;
+}
+
+::ng-deep .p-menuitem-link:hover {
+    background-color: #000 !important;
+}
+
+/*
+::ng-deep .p-menuitem-link-active {
+    background-color: #000 !important;
+}
+
+::ng-deep .p-menuitem-link.ng-star-inserted.active {
+    background-color: #000 !important;
+}
+*/
+
+::ng-deep .p-menuitem a {
+    background: rgba(218, 165, 32, 1) !important;
+    color: greenyellow !important;
+}
+/*
+::ng-deep .p-menuitem-active {
+    background-color: #000 !important;
+}
+
+::ng-deep .p-menuitem:active {
+    background-color: #000 !important;
+}
+
+::ng-deep .p-menuitem.active {
+    background-color: #000 !important;
+}
+
+
+::ng-deep .p-menuitem a:active {
+    background-color: #000 !important;
+}
+
+::ng-deep p-menu > div > ul > li.active > a > span {
+    background-color: #000 !important;
+}
+
+::ng-deep .active {
+    background-color: #000 !important;
+}
+
+::ng-deep .p-focus {
+    background-color: #000 !important;
+}
+*/

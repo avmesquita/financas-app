@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    apicontrole:
+      build: '.'
+      ports:
+        - 3000:3000
+      environment:
+        - MYSQL_HOST='your-host'
+        - MYSQL_PORT=3306
+        - MYSQL_USERNAME='your-mysql-user'
+        - MYSQL_PASSWORD='your-mysql-password'
+        - MYSQL_DATABASE='your-mysql-database'
+        - DEBUG=false
+        - INSECURE_AUTH=false
+        - JWT_SECRET='Y0UR-53CR€7'
+        - PORT=3000

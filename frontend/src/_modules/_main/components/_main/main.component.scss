@@ -1,0 +1,28 @@
+@import '../../../../assets/scss/_rwd-queries';
+
+.footer {
+    position: fixed;
+    bottom:0;
+    background-color: goldenrod;
+    width:100%;
+    height: 40px;
+}
+
+app-menu {
+    margin-top: 0;
+    margin-left: 0;
+    position: fixed;
+    width: 100%;
+    background-color: goldenrod;
+    z-index: 1000;    
+}
+
+.top-margin {
+    padding-top: 44px;
+    @include mediumScreen {
+        padding-top: 34px !important;
+    }
+    @media (max-width: 600px) {
+        padding-top: 34px !important;
+    }
+}

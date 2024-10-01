@@ -1,0 +1,31 @@
+@import '../../../../assets/scss/rwd-queries';
+
+.chip-width > .ui-chips-container {
+    width: 100%;
+ }
+
+.p-datatable-header {
+    //padding-top: 44px;
+    @include mediumScreen {
+        height: 80px !important;
+    }
+    @media (max-width: 600px) {
+        height: 80px !important;
+    }
+}
+
+.lancamento-table-header {
+    height:50px !important;
+    @include mediumScreen {
+        height: 80px !important;
+    }
+    @media (max-width: 600px) {
+        height: 80px !important;
+    }
+}
+
+.lancamento-search-field {
+    @media (max-width: 600px) {
+        width: 160px;
+    }
+}

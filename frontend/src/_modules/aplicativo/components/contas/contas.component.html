@@ -1,0 +1,99 @@
+<p-toast />
+<p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-1">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Nova Conta" icon="pi pi-plus" class="green-button" (click)="incluirConta()"></button>
+        </ng-template>
+        <ng-template pTemplate="right">
+            <div class="grid">
+                <div class="col-6" style="text-align: right;">
+                    <!--<button pButton icon="pi pi-folder" iconPos="left" type="button" label="Carregar" title="Carregar Banco de Dados" class="lightblue-button"   style="min-width: 120px;"></button>-->
+                </div>
+                <div class="col-6" style="text-align: right;">
+                    <!--<button pButton icon="pi pi-save" iconPos="left" type="button" label="Gravar" title="Download do Banco de Dados" class="lightorange-button" (click)="aplicativoService.gravarConfiguracoes()" style="min-width: 120px;"></button>-->
+                </div>
+            </div>
+        </ng-template>
+    </p-toolbar>
+    <ng-container *ngIf="(contas$ | async) as tableContas">
+        <p-table #dt 
+        [value]="tableContas" 
+        [rows]="10" 
+        [paginator]="true" 
+        [globalFilterFields]="['nome','descricao','updatedAt']"
+        [(selection)]="contasSelecionados" 
+        [rowHover]="true" 
+        dataKey="id" 
+        [loading]="splashScreenService.visible"
+        filterBy="nome" [sortField]="sortField" [sortOrder]="sortOrder" [sortMode]="sortMode"
+        stateStorage="local" stateKey="tableContas"
+        [frozenColumns]="['nome']" 
+        [showLoader]="true"
+        [customSort]="false" [showFirstLastIcon]="true"
+        currentPageReportTemplate="A exibir {first} ate {last} de {totalRecords} registos" [showCurrentPageReport]="false"
+        csvSeparator=";" exportFilename="contas">
+        <ng-template pTemplate="caption">
+            <div class="grid conta-table-header">
+                <div class="col-6">
+                    <h2 class="p-m-0">Contas</h2>
+                </div>
+                <div class="col-6" style="text-align: right;">
+                    <input class="conta-search-field" #searchBox pInputText type="text" (input)="dt.filterGlobal(searchBox.value, 'contains')" placeholder="Procurar Nome ..." />
+                </div>
+            </div>
+        </ng-template>    
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="nome">Nome
+                    <p-sortIcon field="nome" type="text"></p-sortIcon> 
+                </th>
+                <th>Descrição
+                    <p-columnFilter type="text" field="descricao" display="menu"></p-columnFilter> 
+                </th>
+                <!--
+                <th [ngStyle]="{'text-align': 'center' }">Créditos</th>
+                <th [ngStyle]="{'text-align': 'center' }">Débitos</th>
+                <th [ngStyle]="{'text-align': 'center' }">Saldo Atual</th>
+                -->
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-conta>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="conta"></p-tableCheckbox>
+                </td>
+                <td>{{ conta.nome }}</td>
+                <td>
+                    {{ conta.descricao }}
+                </td>
+                <!--
+                <td [ngStyle]="{'color': 'blue','text-align': 'center' }">
+                    {{ conta.saldoCredito | number:'1.2-2' }}
+                </td>
+                <td [ngStyle]="{'color': 'red', 'text-align': 'center'}">
+                    {{ conta.saldoDebito | number:'1.2-2' }}
+                </td>
+                <td [ngStyle]="{'color': ((conta.saldoCredito - conta.saldoDebito) > 0) ? 'blue' : ((conta.saldoCredito - conta.saldoDebito) == 0)? 'black': 'red', 'text-align': 'center'}">
+                    {{ (conta.saldoCredito - conta.saldoDebito) | number:'1.2-2' }}
+                </td>
+                -->
+                <td [ngStyle]="{'text-align': 'right' }">
+                    <button pButton pRipple icon="pi pi-eye" class="p-button-rounded blue-button p-mr-2" (click)="consultarConta(conta)"></button>&nbsp;
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded orange-button p-mr-2" (click)="editarConta(conta)"></button>&nbsp;
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded red-button" (click)="excluirConta(conta)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+        </ng-template>
+    </p-table>
+
+
+    </ng-container>
+</div>
