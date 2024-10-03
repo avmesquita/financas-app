@@ -32,7 +32,7 @@ Controlar o fluxo de caixa com os lançamentos de crédito ou débito.
 
 Como o frontend é um software estático após sua transpilação, a carga dos parâmetros de ambiente (environment) é feita em tempo de compilação e não de execução. Sendo assim precisa ser configurado antes da compilação.
 
-Editar o arquivo .env com os dados da API-CONTROLE e API-CONSOLIDADO a apontar para os serviços publicados
+Editar o arquivo "frontend/.env" com os dados da API-CONTROLE e API-CONSOLIDADO a apontar para os serviços publicados
 
 ```bash
     > copy .env.sample .env
