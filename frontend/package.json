@@ -1,7 +1,7 @@
 {
-  "name": "financas-app",
+  "name": "frontend",
   "version": "1.0.0",
-  "description": "Camada de apresentação do sistema financeiro",
+  "description": "Frontend do Finanças App",
   "license": "GPL-3.0",
   "scripts": {
     "ng": "ng",

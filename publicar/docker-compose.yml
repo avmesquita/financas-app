@@ -2,7 +2,7 @@ name: "financas-app"
 version: "3"
 services:
   mysql-db:
-    image: mysql:8.0.37     
+    image: mysql:8.0.37
     restart: unless-stopped
     command: --lower_case_table_names=0
     env_file: ./.env
@@ -31,6 +31,7 @@ services:
       - default
 
   api-controle:
+    image: avmesquita/financas-app-localhost-api-controle
     build: "../api-controle"
     restart: unless-stopped
     env_file: ./.env
@@ -50,6 +51,7 @@ services:
       - default
 
   api-consolidado:
+    image: avmesquita/financas-app-localhost-api-consolidado
     build: "../api-consolidado"
     restart: unless-stopped
     env_file: ./.env
@@ -69,7 +71,10 @@ services:
       - default
 
   frontend:
+    image: avmesquita/financas-app-localhost-frontend
     build: "../frontend"
+    volumes:
+      - wwwroot:/usr/share/nginx/html
     restart: unless-stopped
     ports:
       - 80:80
@@ -78,3 +83,4 @@ services:
 
 volumes:
   mysql-volume:
+  wwwroot:

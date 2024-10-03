@@ -1,13 +1,13 @@
-name: "financas-app"
+name: "frontend"
 version: "3"
 services:
   webapp:
+    image: avmesquita/financas-app-localhost-frontend
     build: "."
-    tags:      
-      - "financas-app"      
-    image: avmesquita/financas-app-frontend
     ports:
       - 80:80
+    volumes:
+      - ./wwwroot:/usr/share/nginx/html
     environment:
       - API-CONTROLE='http://localhost:3000'
       - API-CONSOLIDADO='http://localhost:3000'

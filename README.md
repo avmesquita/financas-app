@@ -44,6 +44,8 @@ Editar o arquivo .env com os dados da API-CONTROLE e API-CONSOLIDADO a apontar p
 ```bash
     > cd publicar
 
+    > copy .env.exemplo .env
+
     > docker-compose build --no-cache --pull
 
     > docker-compose up -d --force-recreate

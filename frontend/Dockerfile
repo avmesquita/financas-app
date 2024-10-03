@@ -13,7 +13,7 @@ COPY --from=node /usr/local/bin /usr/local/bin
 
 RUN npm install -g yarn --force
 
-RUN mkdir -p /ng-app/dist/financas-app
+RUN mkdir -p /ng-app/dist/frontend
 
 WORKDIR /ng-app
 
@@ -31,9 +31,9 @@ RUN yarn run build
 
 FROM nginx:1.14.1-alpine
 
-COPY --from=builder /ng-app/dist/financas-app /usr/share/nginx/html
+COPY --from=builder /ng-app/dist/frontend /usr/share/nginx/html
 
 # CONFIGURE NGINX
-COPY --from=builder /ng-app/dist/financas-app/nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /ng-app/dist/frontend/nginx.conf /etc/nginx/nginx.conf
 
 CMD ["nginx", "-g", "daemon off;"]
