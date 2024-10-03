@@ -2,6 +2,8 @@
 ## PUBLICAÇÃO DOCKER-COMPOSE LOCAL
 
 ```bash
+    > copy .env.exemplo .env
+
     > cd publicar
 
     > docker-compose build --no-cache --pull
