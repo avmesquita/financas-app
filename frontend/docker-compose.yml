@@ -6,8 +6,6 @@ services:
     build: "."
     ports:
       - 80:80
-    volumes:
-      - ./wwwroot:/usr/share/nginx/html
     environment:
       - API-CONTROLE='http://localhost:3000'
       - API-CONSOLIDADO='http://localhost:3000'

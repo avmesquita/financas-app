@@ -51,6 +51,14 @@ Editar o arquivo "frontend/.env" com os dados da API-CONTROLE e API-CONSOLIDADO 
     > docker-compose up -d --force-recreate
 ```
 
+## Versão sem backend
+
+Nesta versão sem backend, os dados são armazenados apenas no navegador.
+
+```bash
+    > docker run -it - --name finance-app -p 80:80 avmesquita/finance-app
+```
+
 
 ## Licença
 
